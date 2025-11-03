@@ -1,0 +1,28 @@
+.except{
+  color: rgb(240, 240, 240);
+  font-size: 12px;
+  padding-top: 7px;
+}
+section img{
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  height: auto;
+}
+h3{
+  margin: 15px 0;
+}
+section{
+  padding:20px 30px;
+}
+section ul{
+  padding-left: 30px;
+}
+.return, .size{
+  background: linear-gradient(to right, #8227c4, #e93b3d);
+  color: white;
+}
+a{
+  color: white;
+  text-decoration: none;
+}

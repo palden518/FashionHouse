@@ -1,0 +1,111 @@
+a{
+  color: black;
+  text-decoration: none;
+}
+a:hover{
+  font-weight: bold;
+  cursor: pointer;
+}
+.size-options label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.price-range {
+  margin-top: 1rem;
+}
+.category-section {
+  margin-bottom: 3rem;
+}
+
+.category-title {
+  font-size: 20px;
+  margin-bottom: 1rem;
+}
+.products-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 2rem;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.product {
+  flex: 0 0 300px;
+  width: 300px;
+  aspect-ratio: 5/3;
+  position: relative;
+  scroll-snap-align: start;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+.products-scroll::-webkit-scrollbar{
+  display: none;
+}
+.product:hover{
+  transform: translateY(-4px);
+}
+.carousel-wrapper {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+  opacity:0.6;
+}
+
+.arrow.left {
+  left: -15px;
+  background-color: rgba(130, 39, 196, 0.7);
+}
+
+.arrow.right {
+  right: -15px;
+  background-color: rgba(233, 59, 61, 0.7);
+}
+
+.arrow:hover {
+  opacity: 1.0;
+}
+
+.product img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h3 {
+  position: absolute;
+  bottom: 0.2px;
+  left: 0px;
+  padding: 0.5rem;
+  padding-top:25px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.6) 60%,transparent 100%);
+  color: #fff;
+  font-size: 0.9rem;
+  width: 100%;
+  border: none;
+  height: 50px;
+}
+
+/*do you want to make it responsive as it is not mendatory?*/
+@media(max-width:500px){
+  .product{
+    flex: 0 0 100%;
+  }
+}
