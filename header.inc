@@ -3,10 +3,9 @@
     </div>
     <nav>
       <ul>
-        <li><a href="trending.php"><p>Trending</p></a></li> <!--Not mendatory-->
         <li><a href="category.php"><p>Categories</p></a></li> <!--Men + Women (mendatory) -->
-        <li><a href="aesthetics.php"><p>Aesthetics</p></a></li> <!--Not mendatory-->
-        <li><a href="customize.php"><p>Customize</p></a> </li><!--Not mendatory-->
+        <li><a href="subcategory-men.php"><p>Men</p></a></li> 
+        <li><a href="subcategory-women.php"><p>Women</p></a> </li>
       </ul>
     </nav>
     <div class="header-right">
@@ -17,7 +16,7 @@
         </form>
       </div>
       <div class="account">
-        <a href="account.php"><img class="account" src="icons/account_circle_white.svg"></a>
+        <a href="customer.php"><img class="account" src="icons/account_circle_white.svg"></a>
         <a href="cart.php"><img class="cart" src="icons/shopping_cart_white.svg"></a>
       </div>
     </div>
