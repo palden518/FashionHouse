@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fashion House - Help</title>
   <link rel="stylesheet" href="styles/header-footer.css">
-  <link rel="stylesheet" href="styles/help.css">
+  <link rel="stylesheet" href="styles/help-customer.css">
 </head>
 <body>
   <header>

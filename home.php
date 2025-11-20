@@ -13,7 +13,9 @@
 
   <main>
     <div class="content">
-    <?php include 'breadcrumb.inc'?>
+    <ul class="breadcrumb">
+  <li><a href="home.php">Home</a></li>
+</ul>
     </div>
   </main>
 
