@@ -4,8 +4,8 @@
     <nav>
       <ul>
         <li><a href="category.php"><p>Categories</p></a></li> <!--Men + Women (mendatory) -->
-        <li><a href="subcategory-men.php"><p>Men</p></a></li> 
-        <li><a href="subcategory-women.php"><p>Women</p></a> </li>
+        <li><a href="product-category.php?category=Men"><p>Men</p></a></li> 
+        <li><a href="product-category.php?category=Women"><p>Women</p></a> </li>
       </ul>
     </nav>
     <div class="header-right">
