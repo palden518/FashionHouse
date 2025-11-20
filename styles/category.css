@@ -1,111 +1,212 @@
-a{
-  color: black;
-  text-decoration: none;
-}
-a:hover{
-  font-weight: bold;
-  cursor: pointer;
-}
-.size-options label {
-  display: block;
-  margin-bottom: 4px;
-}
+    :root {
+      --primary-color: #333;
+      --secondary-color: #555;
+      --light-bg: #f8f9fa;
+      --border-color: #dee2e6;
+    }
 
-.price-range {
-  margin-top: 1rem;
-}
-.category-section {
-  margin-bottom: 3rem;
-}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: white;
+    }
 
-.category-title {
-  font-size: 20px;
-  margin-bottom: 1rem;
-}
-.products-scroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 2rem;
-  padding-bottom: 1rem;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-}
-.product {
-  flex: 0 0 300px;
-  width: 300px;
-  aspect-ratio: 5/3;
-  position: relative;
-  scroll-snap-align: start;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease;
-}
-.products-scroll::-webkit-scrollbar{
-  display: none;
-}
-.product:hover{
-  transform: translateY(-4px);
-}
-.carousel-wrapper {
-  position: relative;
-}
+    .content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
 
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 5;
-  color: white;
-  border: none;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.3s ease;
-  opacity:0.6;
-}
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary-color);
+      margin-bottom: 60px;
+    }
 
-.arrow.left {
-  left: -15px;
-  background-color: rgba(130, 39, 196, 0.7);
-}
+    .category-section {
+      margin-bottom: 80px;
+    }
 
-.arrow.right {
-  right: -15px;
-  background-color: rgba(233, 59, 61, 0.7);
-}
+    .category-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
 
-.arrow:hover {
-  opacity: 1.0;
-}
+    .category-title a {
+      text-decoration: none;
+      color: var(--primary-color);
+      transition: color 0.3s ease;
+      border-bottom: 3px solid transparent;
+      padding-bottom: 5px;
+    }
 
-.product img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .category-title a:hover {
+      color: var(--secondary-color);
+      border-bottom-color: var(--secondary-color);
+    }
 
-h3 {
-  position: absolute;
-  bottom: 0.2px;
-  left: 0px;
-  padding: 0.5rem;
-  padding-top:25px;
-  background: linear-gradient(to top, rgba(0,0,0,0.85) 30%, rgba(0,0,0,0.6) 60%,transparent 100%);
-  color: #fff;
-  font-size: 0.9rem;
-  width: 100%;
-  border: none;
-  height: 50px;
-}
+    .carousel-container {
+      position: relative;
+      padding: 20px 0;
+    }
 
-/*do you want to make it responsive as it is not mendatory?*/
-@media(max-width:500px){
-  .product{
-    flex: 0 0 100%;
-  }
-}
+    .carousel-inner {
+      background-color: var(--light-bg);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .carousel-item {
+      padding: 20px;
+    }
+
+    .subcategory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+
+    .subcategory-item {
+      position: relative;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .subcategory-item a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .subcategory-img-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%;
+      overflow: hidden;
+      border-radius: 8px;
+      background-color: #e9ecef;
+      margin-bottom: 15px;
+    }
+
+    .subcategory-img-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .subcategory-item:hover .subcategory-img-container img {
+      transform: scale(1.1);
+    }
+
+    .subcategory-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      transition: color 0.3s ease;
+    }
+
+    .subcategory-item:hover .subcategory-name {
+      color: var(--secondary-color);
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: auto;
+      height: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: transparent;
+      border: none;
+      font-size: 2rem;
+      color: var(--primary-color);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+      opacity: 1;
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    .carousel-control-prev {
+      left: -50px;
+    }
+
+    .carousel-control-next {
+      right: -50px;
+    }
+
+    .no-products {
+      padding: 40px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 1.1rem;
+      background-color: var(--light-bg);
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .category-title {
+        font-size: 1.5rem;
+      }
+
+      .subcategory-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+      }
+
+      .carousel-control-prev {
+        left: 0;
+      }
+
+      .carousel-control-next {
+        right: 0;
+      }
+
+      .carousel-item {
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .content {
+        padding: 20px 10px;
+      }
+
+      .page-title {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+      }
+
+      .category-title {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+      }
+
+      .subcategory-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 12px;
+      }
+
+      .subcategory-name {
+        font-size: 0.9rem;
+      }
+    }
