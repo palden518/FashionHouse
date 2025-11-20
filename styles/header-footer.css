@@ -47,7 +47,7 @@ nav ul li a {
   color: white;
   font-weight: 500;
 }
-nav ul li a :hover{
+nav ul li a:hover{
   font-weight: bold;
   cursor: pointer;
   color: white;
