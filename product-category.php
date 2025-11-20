@@ -69,6 +69,10 @@ while ($product = $products_result->fetch_assoc()) {
     $product['images'] = $images;
     $products[] = $product;
 }
+ //To have multiple level for breadcrumb
+$category = isset($_GET['category']) ? htmlspecialchars($_GET['category']) : '';
+$type     = isset($_GET['type']) ? htmlspecialchars($_GET['type']) : '';
+
 ?>
 
 <!DOCTYPE html>
@@ -78,252 +82,10 @@ while ($product = $products_result->fetch_assoc()) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fashion House - <?php echo htmlspecialchars($page_title); ?></title>
   <link rel="stylesheet" href="styles/header-footer.css">
+  <link rel="stylesheet" href="styles/product-category.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    :root {
-      --primary-color: #333;
-      --secondary-color: #555;
-      --light-bg: #f8f9fa;
-    }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: white;
-    }
-
-    .content {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    .page-header {
-      margin-bottom: 50px;
-    }
-
-    .breadcrumb-nav {
-      margin-bottom: 30px;
-      font-size: 0.95rem;
-    }
-
-    .breadcrumb-nav a {
-      color: var(--secondary-color);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .breadcrumb-nav a:hover {
-      color: var(--primary-color);
-    }
-
-    .page-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--primary-color);
-      margin-bottom: 30px;
-    }
-
-    .filter-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      background-color: var(--light-bg);
-      border-radius: 8px;
-      margin-bottom: 40px;
-    }
-
-    .filter-tag {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      background-color: var(--primary-color);
-      color: white;
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .tag-remove {
-      cursor: pointer;
-      font-weight: bold;
-      transition: transform 0.2s ease;
-    }
-
-    .tag-remove:hover {
-      transform: scale(1.2);
-    }
-
-    .products-count {
-      color: #6c757d;
-      font-size: 0.95rem;
-    }
-
-    .product-card {
-      transition: all 0.3s ease;
-      border: none;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    }
-
-    .product-img-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 125%;
-      overflow: hidden;
-      background-color: #e9ecef;
-    }
-
-    .product-img-container img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .product-card:hover .product-img-container img {
-      transform: scale(1.05);
-    }
-
-    .product-info {
-      padding: 20px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .product-name {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--primary-color);
-      margin-bottom: 10px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-    }
-
-    .product-price {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--secondary-color);
-      margin-bottom: 15px;
-    }
-
-    .actions {
-      display: flex;
-      gap: 15px;
-      justify-content: flex-end;
-    }
-
-    .actions img {
-      width: 28px;
-      height: 28px;
-      cursor: pointer;
-      transition: transform 0.3s ease, filter 0.3s ease;
-      filter: brightness(0.8);
-    }
-
-    .actions img:hover {
-      transform: scale(1.2);
-      filter: brightness(1);
-    }
-
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .no-products {
-      padding: 60px 40px;
-      text-align: center;
-      color: #6c757d;
-      font-size: 1.2rem;
-      grid-column: 1 / -1;
-      background-color: var(--light-bg);
-      border-radius: 8px;
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 12px 25px;
-      background-color: var(--primary-color);
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
-
-    .back-link:hover {
-      background-color: var(--secondary-color);
-      transform: translateY(-2px);
-    }
-
-    @media (max-width: 992px) {
-      .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 25px;
-      }
-
-      .page-title {
-        font-size: 2rem;
-      }
-
-      .filter-info {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .content {
-        padding: 20px 10px;
-      }
-
-      .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 20px;
-      }
-
-      .page-title {
-        font-size: 1.8rem;
-      }
-
-      .filter-info {
-        padding: 15px;
-      }
-
-      .tag {
-        padding: 6px 12px;
-        font-size: 0.85rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -333,7 +95,30 @@ while ($product = $products_result->fetch_assoc()) {
 
   <main>
     <div class="content">
-      <?php include 'breadcrumb.inc'?>
+      <ul class="breadcrumb">
+
+        <li><a href="home.php">Home</a></li>
+
+        <li><a href="category.php">Categories</a></li>
+
+        <?php if ($category): ?>
+          <li>
+            <a href="product-category.php?category=<?php echo urlencode($category); ?>">
+              <?php echo $category; ?>
+            </a>
+          </li>
+        <?php endif; ?>
+
+        <?php if ($category && $type): ?>
+          <li>
+            <a href="product-category.php?category=<?php echo urlencode($category); ?>&type=<?php echo urlencode($type); ?>">
+              <?php echo $type; ?>
+            </a>
+          </li>
+        <?php endif; ?>
+
+      </ul>
+
       
       <div class="page-header">
         <h1 class="page-title"><?php echo htmlspecialchars($page_title); ?></h1>
