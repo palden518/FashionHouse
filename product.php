@@ -211,7 +211,10 @@ body {
 
             <!-- Quantity -->
             <p class="fw-semibold mt-3 mb-1">Quantity</p>
-            <input type="number" name="quantity" value="1" min="1" class="form-control w-25">
+                <div class="d-flex align-items-center gap-2">
+                    <input type="number" name="quantity" value="1" min="1" class="form-control w-25" id="quantity-input">
+                    <span class="fw-bold fs-5">Total: $<span id="total-price"><?php echo number_format($product['price'],2); ?></span></span>
+                </div>
 
             <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
 
@@ -280,6 +283,16 @@ document.querySelectorAll('label .pill-btn').forEach(btn => {
         input.checked = true;
         btn.classList.add('selected');
     });
+});
+
+const quantityInput = document.getElementById('quantity-input');
+const totalPriceSpan = document.getElementById('total-price');
+const unitPrice = <?php echo $product['price']; ?>;
+
+quantityInput.addEventListener('input', () => {
+    let qty = parseInt(quantityInput.value);
+    if(isNaN(qty) || qty < 1) qty = 1;
+    totalPriceSpan.textContent = (unitPrice * qty).toFixed(2);
 });
 </script>
 </body>
