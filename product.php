@@ -93,54 +93,7 @@ if ($product) {
 
     <!-- ADD HEADER-FOOTER CSS -->
     <link rel="stylesheet" href="styles/header-footer.css">
-
-    <style>
-        body { font-family: Arial, sans-serif; background: #f9fafb; margin: 0; padding: 0; }
-
-        .container { max-width: 1100px; margin: 20px auto; padding: 20px; background: #fff; border-radius: 8px; }
-        .product-layout { display: flex; gap: 30px; flex-wrap: wrap; }
-        .product-image img { width: 100%; max-width: 450px; border-radius: 10px; }
-        .product-info { flex: 1; }
-
-        .product-title { font-size: 30px; font-weight: bold; }
-        .price { font-size: 28px; color: #2563eb; font-weight: bold; margin-top: 10px; }
-        .badge { margin-top: 10px; padding: 5px 12px; border-radius: 10px; display: inline-block; background: #eee; }
-
-        .breadcrumb a { color: #2563eb; text-decoration: none; }
-        .breadcrumb a:hover { text-decoration: underline; }
-
-        .section-title { font-weight: 600; margin-top: 20px; margin-bottom: 8px; }
-        .options-row { display: flex; flex-wrap: wrap; gap: 8px; }
-        .pill-btn {
-            padding: 6px 14px;
-            border-radius: 999px;
-            border: 1px solid #d1d5db;
-            background: white;
-            cursor: pointer;
-            font-size: 14px;
-            display: inline-block;
-        }
-        .pill-btn.selected {
-            border-color: #2563eb;
-            background: #eff6ff;
-            color: #1d4ed8;
-        }
-
-        .quantity-row input { width: 60px; padding: 4px; }
-
-        .btn-primary {
-            background:#2563eb;
-            color:white;
-            padding:10px 16px;
-            border:none;
-            border-radius:5px;
-            cursor:pointer;
-            margin-right:8px;
-            margin-top:10px;
-        }
-
-        .review-item { border-bottom:1px solid #ddd; padding:10px 0; }
-    </style>
+    <link rel="stylesheet" href="styles/product.css">
 </head>
 
 <body>

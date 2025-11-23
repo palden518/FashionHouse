@@ -48,73 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Checkout - Fashion House</title>
     <link rel="stylesheet" href="styles/header-footer.css">
-    <style>
-        body { font-family: Arial, sans-serif; margin:0; background:#f3f4f6; }
-
-        .container {
-            max-width: 1100px;
-            margin: 25px auto;
-            padding: 20px;
-            background:white;
-            border-radius:8px;
-            display:flex;
-            flex-wrap:wrap;
-            gap:30px;
-        }
-
-        .summary, .form-area {
-            flex:1;
-            min-width:320px;
-        }
-
-        table { width:100%; border-collapse:collapse; margin-bottom:10px; }
-        th, td { padding:10px; border-bottom:1px solid #e5e7eb; }
-        th { background:#f9fafb; font-weight:600; }
-
-        .total {
-            text-align:right;
-            font-weight:bold;
-            font-size:18px;
-            padding-top:10px;
-        }
-
-        .field { margin-bottom:12px; }
-        .field label { font-weight:600; margin-bottom:5px; display:block; }
-        .field input, .field textarea, .field select {
-            width:100%;
-            padding:10px;
-            border:1px solid #d1d5db;
-            border-radius:5px;
-        }
-
-        .btn {
-            padding:12px 18px;
-            border:none;
-            border-radius:5px;
-            cursor:pointer;
-            font-size:15px;
-        }
-        .btn-primary {
-            background:#2563eb;
-            color:white;
-        }
-
-        .success {
-            background:#dcfce7;
-            color:#15803d;
-            padding:15px;
-            border-radius:6px;
-            margin-bottom:15px;
-        }
-
-        .error {
-            background:#fee2e2;
-            color:#b91c1c;
-            padding:12px;
-            border-radius:5px;
-            margin-bottom:10px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/checkout.css">
 </head>
 <body>
 

@@ -96,23 +96,7 @@ foreach ($cart_items as $item) {
     <meta charset="UTF-8">
     <title>Your Cart - Fashion House</title>
     <link rel="stylesheet" href="styles/header-footer.css">
-    <style>
-        body { font-family: Arial, sans-serif; background:#f3f4f6; margin:0; }
-        .container { max-width: 1000px; margin:20px auto; background:white; padding:20px; border-radius:8px; }
-
-        table { width:100%; border-collapse:collapse; margin-bottom:20px; }
-        th, td { padding:10px; border-bottom:1px solid #e5e7eb; }
-
-        th { background:#f9fafb; }
-
-        .btn { padding:8px 14px; border:none; border-radius:4px; cursor:pointer; font-size:14px; }
-        .btn-primary { background:#2563eb; color:white; }
-        .btn-outline { background:white; color:#2563eb; border:1px solid #2563eb; }
-        .btn-danger { background:#dc2626; color:white; }
-        .total-row { text-align:right; font-size:18px; font-weight:bold; }
-        .empty { text-align:center; padding:30px; }
-
-    </style>
+    <link rel="stylesheet" href="styles/cart.css">
 </head>
 
 <body>
