@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif; /* to define*/
+}
+
+body {
+  background-color: white; /*to define*/
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: linear-gradient(to right, rgb(130, 39, 196), rgb(233, 59, 61));
+  border-bottom: 1px solid #ccc; /*to define*/
+}
+
+.logo a{ 
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+  padding: 0 20px;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.logo img { 
+  width: 30px;
+  margin-right: 10px;
+  padding-bottom: 3px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+nav ul li a:hover{
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.searchbar {
+  display: inline-block;
+  align-items: center;
+  border: 1px solid #d1d0d0;
+  border-radius: 30px;
+  padding: 5px 10px;
+  background-color: #fff;
+}
+.searchbar form{
+  display: flex;
+  align-items: center;
+}
+.searchbar input {
+  border: none;
+  outline: none;
+  padding: 8px 10px;
+  font-size: 14px;
+  background-color: transparent;
+  width: 150px; 
+}
+
+.searchbar button {
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.icon-btn {
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  background-color: #f8f8f8; /*to define*/
+  padding: 20px 30px;
+  margin-top: 20px;
+  border-top: 1px solid #ddd; /*to define*/
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  margin: 10px 0;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #444;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.social-icons a img{
+  width: 30px;
+  height: 30px;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  margin-top: 20px;
+}
+
+/* BREADCRUMB */
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+}
+
+ul.breadcrumb li {
+  display: inline;
+}
+
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  content: ">";
+}
+
+ul.breadcrumb li a {
+  text-decoration: none;
+  color: #777;
+}
+
+ul.breadcrumb li a:hover {
+  color: #444;
+  font-weight: bold;
+}
+
+/*MAIN*/
+.content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 40px;
+  font-weight: bold;/*to define */
+  margin: 1rem 0 2rem;
+  color: #555; /*to define */
+  text-shadow: 2px 2px #ccc;/*to define */
+}
+/* Footer link blue color styling */
+.footer-blue {
+    color: #2563eb !important;       /* Blue */
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-blue:hover {
+    text-decoration: underline;
+}
