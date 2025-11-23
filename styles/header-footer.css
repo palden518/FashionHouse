@@ -190,3 +190,42 @@ ul.breadcrumb li a:hover {
   color: #555; /*to define */
   text-shadow: 2px 2px #ccc;/*to define */
 }
+/* ACCOUNT DROPDOWN */
+.account-dropdown-container {
+  position: relative;
+  display: inline-block;
+}
+
+.account-btn {
+  width: 32px;
+  cursor: pointer;
+}
+
+.account-dropdown {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: white;
+  width: 150px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.account-dropdown a {
+  display: block;
+  padding: 12px 15px;
+  text-decoration: none;
+  color: black;
+}
+
+.account-dropdown a:hover {
+  background: #f2f2f2;
+}
+
+/* SHOW DROPDOWN ON HOVER */
+.account-dropdown-container:hover .account-dropdown {
+  display: block;
+}

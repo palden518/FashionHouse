@@ -59,7 +59,7 @@
     }
 
     .carousel-inner {
-      background-color: var(--light-bg);
+      background-color: rgb(150, 150, 150);
       border-radius: 8px;
       overflow: hidden;
     }

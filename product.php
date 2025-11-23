@@ -84,181 +84,197 @@ if ($product) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <title>
-        <?php echo $product ? htmlspecialchars($product['product_name']) . " - Fashion House" : "Product Not Found"; ?>
-    </title>
+<meta charset="UTF-8">
+<title><?php echo $product ? htmlspecialchars($product['product_name'])." - Fashion House" : "Product Not Found"; ?></title>
 
-    <!-- ADD HEADER-FOOTER CSS -->
-    <link rel="stylesheet" href="styles/header-footer.css">
-    <link rel="stylesheet" href="styles/product.css">
+<!-- BOOTSTRAP -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="styles/header-footer.css">
+
+<style>
+/* remove fixed container spacing */
+.container-custom {
+    max-width: 1200px;
+    margin-top: 30px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+body {
+    background: linear-gradient(135deg,#f5f7fa,#c3cfe2);
+}
+
+.product-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.pill-btn {
+    padding: 8px 18px;
+    border-radius: 50px;
+    border: 1px solid #cbd5e1;
+    cursor: pointer;
+    background: #fff;
+}
+.pill-btn.selected {
+    background: #eef2ff;
+    border-color: #667eea;
+    color: #4f46e5;
+}
+
+.btn-primary-custom {
+    background: linear-gradient(135deg,#667eea,#764ba2);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.btn-primary-custom:hover {
+    opacity: .92;
+}
+</style>
 </head>
-
 <body>
 
 <header>
-    <?php include 'header.inc'; ?>
+<?php include 'header.inc'; ?>
 </header>
 
-<main>
-    <div class="container">
+<main class="container container-custom">
 
-        <?php if (!$product): ?>
-            <h2>Product Not Found</h2>
-            <p>This product does not exist.</p>
-            <a href="category.php?gender=men">Back to shop</a>
+<?php if(!$product): ?>
+<h2>Product Not Found</h2>
+<p>This product does not exist.</p>
+<a href="category.php?gender=men">Back to shop</a>
+<?php else: ?>
 
-        <?php else: ?>
+<!-- Breadcrumb -->
+<nav class="mb-3 small">
+<a href="home.php" class="text-decoration-none">Home</a> ›
+<a href="category.php" class="text-decoration-none">Categories</a> ›
+<a href="category.php?gender=<?php echo strtolower($genderName); ?>" class="text-decoration-none"><?php echo $genderName; ?></a> ›
+<span><?php echo htmlspecialchars($product['product_name']); ?></span>
+</nav>
 
-            <!-- Breadcrumb -->
-            <div class="breadcrumb" style="margin-bottom:15px;">
-                <a href="home.php">Home</a> ›
-                <a href="category.php">Categories</a> ›
-                <a href="category.php?gender=<?php echo strtolower($genderName); ?>">
-                    <?php echo $genderName; ?>
-                </a> ›
-                <span><?php echo htmlspecialchars($product['product_name']); ?></span>
-            </div>
-
-            <div class="product-layout">
-                <!-- Image -->
-                <div class="product-image">
-                    <?php if (!empty($product_images)): ?>
-                        <img src="<?php echo htmlspecialchars($product_images[0]['image_url']); ?>"
-                             alt="<?php echo htmlspecialchars($product_images[0]['alt_text']); ?>">
-                    <?php else: ?>
-                        <img src="images/placeholder.jpg" alt="No image">
-                    <?php endif; ?>
-                </div>
-
-                <!-- Info -->
-                <div class="product-info">
-                    <div class="product-title"><?php echo htmlspecialchars($product['product_name']); ?></div>
-                    <div class="price">$<?php echo number_format($product['price'], 2); ?></div>
-                    <div class="badge">
-                        <?php echo ($product['stock_quantity'] > 0) ? "In Stock" : "Out of Stock"; ?>
-                    </div>
-
-                    <form method="post" action="cart.php" style="margin-top:20px;">
-
-                        <?php if (!empty($colors)): ?>
-                            <div class="section-title">Color</div>
-                            <div class="options-row">
-                                <?php foreach ($colors as $index => $color): ?>
-                                    <label>
-                                        <input type="radio" name="color" value="<?php echo $color; ?>"
-                                               style="display:none;" <?php echo $index === 0 ? "checked" : ""; ?>>
-                                        <span class="pill-btn <?php echo $index === 0 ? "selected" : ""; ?>">
-                                            <?php echo $color; ?>
-                                        </span>
-                                    </label>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php if (!empty($sizes)): ?>
-                            <div class="section-title">Size</div>
-                            <div class="options-row">
-                                <?php foreach ($sizes as $index => $size): ?>
-                                    <label>
-                                        <input type="radio" name="size" value="<?php echo $size; ?>"
-                                               style="display:none;" <?php echo $index === 0 ? "checked" : ""; ?>>
-                                        <span class="pill-btn <?php echo $index === 0 ? "selected" : ""; ?>">
-                                            <?php echo $size; ?>
-                                        </span>
-                                    </label>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?>
-
-                        <div class="section-title">Quantity</div>
-                        <input type="number" name="quantity" value="1" min="1">
-
-                        <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
-
-                        <button type="submit" name="add_to_cart" class="btn-primary">Add to Cart</button>
-
-                        <button type="submit" name="buy_now"
-                                formaction="checkout.php"
-                                class="btn-primary">
-                            Buy Now
-                        </button>
-                    </form>
-
-                    <hr style="margin-top:25px;">
-
-                    <h3>Description</h3>
-                    <p><?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
-                </div>
-            </div>
-
-            <!-- Reviews -->
-            <div class="reviews">
-                <h2>Customer Reviews</h2>
-
-                <?php if ($reviews && $reviews->num_rows > 0): ?>
-                    <?php while ($rev = $reviews->fetch_assoc()): ?>
-                        <div class="review-item">
-                            <strong><?php echo htmlspecialchars($rev['name']); ?></strong>
-                            <div style="color:#f59e0b;">
-                                <?php echo str_repeat("★", (int)$rev['rating']); ?>
-                                <?php echo str_repeat("☆", 5 - (int)$rev['rating']); ?>
-                            </div>
-                            <p><?php echo nl2br(htmlspecialchars($rev['review'])); ?></p>
-                        </div>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <p>No reviews yet.</p>
-                <?php endif; ?>
-
-                <h3>Write a Review</h3>
-
-                <form method="post" action="submit_review.php" style="max-width:400px;display:flex;flex-direction:column;gap:10px;">
-                    <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
-
-                    <label>Your Name:
-                        <input type="text" name="name" required>
-                    </label>
-
-                    <label>Rating:
-                        <select name="rating" required>
-                            <option value="5">★★★★★ 5 stars</option>
-                            <option value="4">★★★★ 4 stars</option>
-                            <option value="3">★★★ 3 stars</option>
-                            <option value="2">★★ 2 stars</option>
-                            <option value="1">★ 1 star</option>
-                        </select>
-                    </label>
-
-                    <label>Your Review:
-                        <textarea name="review" rows="4" required></textarea>
-                    </label>
-
-                    <button type="submit" class="btn-primary">Submit Review</button>
-                </form>
-            </div>
-
-        <?php endif; ?>
-
+<div class="row g-4">
+    <!-- Product image column -->
+    <div class="col-12 col-md-5">
+        <div class="product-image">
+            <?php if(!empty($product_images)): ?>
+            <img src="<?php echo htmlspecialchars($product_images[0]['image_url']); ?>">
+            <?php else: ?>
+            <img src="images/placeholder.jpg">
+            <?php endif; ?>
+        </div>
     </div>
+
+    <!-- Product details column -->
+    <div class="col-12 col-md-7">
+        <h2 class="fw-bold"><?php echo htmlspecialchars($product['product_name']); ?></h2>
+        <h4 class="text-primary">$<?php echo number_format($product['price'],2); ?></h4>
+        <span class="badge bg-primary-subtle text-primary fw-semibold">
+            <?php echo ($product['stock_quantity']>0) ? "In Stock" : "Out of Stock"; ?>
+        </span>
+
+        <form action="cart.php" method="post" class="mt-3">
+
+            <!-- Colors -->
+            <?php if(!empty($colors)): ?>
+            <p class="fw-semibold mt-3 mb-1">Color</p>
+            <div class="d-flex flex-wrap gap-2">
+                <?php foreach($colors as $i=>$color): ?>
+                <label>
+                    <input type="radio" name="color" value="<?php echo $color; ?>" class="d-none" <?php echo $i===0?'checked':''; ?>>
+                    <span class="pill-btn <?php echo $i===0?'selected':''; ?>"><?php echo $color; ?></span>
+                </label>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
+
+            <!-- Sizes -->
+            <?php if(!empty($sizes)): ?>
+            <p class="fw-semibold mt-3 mb-1">Size</p>
+            <div class="d-flex flex-wrap gap-2">
+                <?php foreach($sizes as $i=>$size): ?>
+                <label>
+                    <input type="radio" name="size" value="<?php echo $size; ?>" class="d-none" <?php echo $i===0?'checked':''; ?>>
+                    <span class="pill-btn <?php echo $i===0?'selected':''; ?>"><?php echo $size; ?></span>
+                </label>
+                <?php endforeach; ?>
+            </div>
+            <?php endif; ?>
+
+            <!-- Quantity -->
+            <p class="fw-semibold mt-3 mb-1">Quantity</p>
+            <input type="number" name="quantity" value="1" min="1" class="form-control w-25">
+
+            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+
+            <div class="d-flex gap-2 mt-4">
+                <button name="add_to_cart" class="btn-primary-custom" type="submit">Add to Cart</button>
+                <button name="buy_now" type="submit" formaction="checkout.php" class="btn-primary-custom">Buy Now</button>
+            </div>
+        </form>
+
+        <hr class="mt-4">
+        <h5>Description</h5>
+        <p><?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
+    </div>
+</div>
+
+<!-- Reviews -->
+<div class="mt-5">
+<h3>Customer Reviews</h3>
+<?php if ($reviews && $reviews->num_rows > 0): ?>
+<?php while ($rev = $reviews->fetch_assoc()): ?>
+<div class="border-bottom py-2">
+<strong><?php echo htmlspecialchars($rev['name']); ?></strong>
+<div class="text-warning small"> 
+<?php echo str_repeat("★", (int)$rev['rating']); ?>
+<?php echo str_repeat("☆", 5-(int)$rev['rating']); ?>
+</div>
+<p class="mb-0"><?php echo nl2br(htmlspecialchars($rev['review'])); ?></p>
+</div>
+<?php endwhile; ?>
+<?php else: ?><p>No reviews yet.</p><?php endif; ?>
+
+<h4 class="mt-4">Write a Review</h4>
+<form method="post" action="submit_review.php" class="d-flex flex-column gap-2" style="max-width:400px">
+    <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+    <input type="text" name="name" placeholder="Your name" class="form-control" required>
+    <select name="rating" class="form-select" required>
+        <option value="5">★★★★★ 5 stars</option>
+        <option value="4">★★★★ 4 stars</option>
+        <option value="3">★★★ 3 stars</option>
+        <option value="2">★★ 2 stars</option>
+        <option value="1">★ 1 star</option>
+    </select>
+    <textarea name="review" rows="4" class="form-control" placeholder="Write your review..." required></textarea>
+    <button class="btn-primary-custom" type="submit">Submit Review</button>
+</form>
+</div>
+
+<?php endif; ?>
 </main>
 
 <footer>
-    <?php include 'footer.inc'; ?>
+<?php include 'footer.inc'; ?>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// Toggle selected class on color & size
-document.querySelectorAll('label .pill-btn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-        var label = e.target.closest('label');
-        var input = label.querySelector('input[type="radio"]');
-        var groupName = input.name;
+document.querySelectorAll('label .pill-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+        const label = e.target.closest('label');
+        const input = label.querySelector('input');
 
-        document.querySelectorAll('input[name="' + groupName + '"]').forEach(function(radio) {
-            radio.parentElement.querySelector('.pill-btn').classList.remove('selected');
+        document.querySelectorAll(`input[name="${input.name}"]`).forEach(r => {
+            r.parentElement.querySelector('.pill-btn').classList.remove('selected');
         });
 
         input.checked = true;
@@ -266,6 +282,5 @@ document.querySelectorAll('label .pill-btn').forEach(function(btn) {
     });
 });
 </script>
-
 </body>
 </html>

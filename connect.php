@@ -5,10 +5,7 @@ ini_set('display_errors', 1);
 // Load environment variables from .env file
 $env_file = __DIR__ . '/.env';
 
-echo "<!-- DEBUG: Looking for .env at: $env_file -->";
-
 if (file_exists($env_file)) {
-    echo "<!-- DEBUG: .env file found -->";
     $lines = file($env_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
         if (strpos($line, '=') !== false && strpos($line, '#') !== 0) {
@@ -31,8 +28,6 @@ $servername = getenv('DB_HOST');
 $username = getenv('DB_USER');
 $password = getenv('DB_PASS');
 $database = getenv('DB_NAME');
-
-echo "<!-- DEBUG: DB_HOST=$servername, DB_USERNAME=$username, DB_PASSWORD=$password, DB_DATABASE=$database -->";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);

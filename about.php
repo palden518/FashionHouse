@@ -11,6 +11,7 @@
   <header>
     <?php include 'header.inc'?>
   </header>
+  <script src="./scripts/dropdownscript.js"></script>
 
   <main>
 
