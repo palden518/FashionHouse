@@ -63,3 +63,126 @@ th { background:#f9fafb; font-weight:600; }
     border-radius:5px;
     margin-bottom:10px;
 }
+
+:root {
+    --primary-color: #333;
+    --secondary-color: #555;
+    --light-bg: #f8f9fa;
+    --border-color: #dee2e6;
+    --accent: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    margin:0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.checkout-summary, .checkout-form {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 30px;
+}
+
+.checkout-summary h2, .checkout-form h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+th {
+    background: var(--light-bg);
+    font-weight: 700;
+}
+
+.total {
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.field { margin-bottom: 15px; }
+.field label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+.field input, .field textarea, .field select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: white;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.success {
+    background:#dcfce7;
+    color:#15803d;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.error {
+    background:#fee2e2;
+    color:#b91c1c;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+@media (max-width: 992px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}

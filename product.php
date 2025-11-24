@@ -1,6 +1,6 @@
 <?php
 // product.php
-
+session_start();
 require_once "connect.php";
 
 // 1. Get product_id from URL: product.php?id=15
@@ -92,52 +92,8 @@ if ($product) {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="styles/header-footer.css">
+<link rel="stylesheet" href="styles/product.css">
 
-<style>
-/* remove fixed container spacing */
-.container-custom {
-    max-width: 1200px;
-    margin-top: 30px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
-body {
-    background: linear-gradient(135deg,#f5f7fa,#c3cfe2);
-}
-
-.product-image img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.pill-btn {
-    padding: 8px 18px;
-    border-radius: 50px;
-    border: 1px solid #cbd5e1;
-    cursor: pointer;
-    background: #fff;
-}
-.pill-btn.selected {
-    background: #eef2ff;
-    border-color: #667eea;
-    color: #4f46e5;
-}
-
-.btn-primary-custom {
-    background: linear-gradient(135deg,#667eea,#764ba2);
-    color: white;
-    border: none;
-    padding: 12px 22px;
-    border-radius: 8px;
-    font-weight: 600;
-}
-.btn-primary-custom:hover {
-    opacity: .92;
-}
-</style>
 </head>
 <body>
 

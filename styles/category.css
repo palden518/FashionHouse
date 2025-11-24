@@ -159,6 +159,147 @@
       border-radius: 8px;
     }
 
+    .modal-backdrop {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .modal-title {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-close-white {
+      filter: brightness(0) invert(1);
+    }
+
+    .quantity-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .quantity-group label {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background-color: #f8f9fa;
+      border-radius: 6px;
+      padding: 5px;
+    }
+
+    .quantity-btn {
+      width: 35px;
+      height: 35px;
+      border: none;
+      background-color: white;
+      color: #333;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .quantity-btn:hover {
+      background-color: #667eea;
+      color: white;
+    }
+
+    .quantity-input {
+      width: 60px;
+      text-align: center;
+      border: none;
+      background: transparent;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .quantity-input:focus {
+      outline: none;
+    }
+
+    .add-to-cart-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .add-to-cart-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .cancel-btn {
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .cancel-btn:hover {
+      background-color: #5a6268;
+    }
+
+    .toast-notification {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #28a745;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 9999;
+      animation: slideIn 0.3s ease;
+    }
+
+    .toast-notification.error {
+      background-color: #dc3545;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
     @media (max-width: 768px) {
       .page-title {
         font-size: 2rem;

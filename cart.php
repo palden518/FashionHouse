@@ -98,8 +98,6 @@ function updateItemTotal(input) {
     const itemTotalDiv = input.closest('.cart-item').querySelector('.item-total');
     const price = parseFloat(itemTotalDiv.getAttribute('data-price'));
     itemTotalDiv.textContent = '$' + (price * quantity).toFixed(2);
-
-    // Optionally, update the summary total
     updateCartSummary();
 }
 

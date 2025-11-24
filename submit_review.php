@@ -1,6 +1,7 @@
 <?php
 // submit_review.php
 include 'connect.php';
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

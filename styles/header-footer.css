@@ -2,74 +2,89 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif; /* to define*/
+  font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-  background-color: white; /*to define*/
+  background-color: white;
 }
 
-/* HEADER */
+/* ======================
+      HEADER
+====================== */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
   background: linear-gradient(to right, rgb(130, 39, 196), rgb(233, 59, 61));
-  border-bottom: 1px solid #ccc; /*to define*/
+  border-bottom: 1px solid #ccc;
 }
 
-.logo a{ 
+
+.logo a { 
   display: flex;
   align-items: center;
   font-weight: bold;
   font-size: 24px;
   color: white;
   padding: 0 20px;
-  width: fit-content;
   text-decoration: none;
 }
 
 .logo img { 
-  width: 30px;
+  width: 34px;
   margin-right: 10px;
-  padding-bottom: 3px;
 }
+
 
 nav ul {
   display: flex;
   list-style: none;
-  gap: 30px;
+  gap: 80px;
 }
+nav ul li a {
+    font-size: 20px;      
+    font-weight: 600;     
+    padding-top: 15px;
+    display: inline-block;
+  }
 
 nav ul li a {
   text-decoration: none;
   color: white;
   font-weight: 500;
 }
-nav ul li a:hover{
+
+nav ul li a:hover {
   font-weight: bold;
   cursor: pointer;
-  color: white;
 }
+
+/* RIGHT SIDE CONTAINER */
 .header-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 25px;
 }
 
+/* ======================
+      SEARCH BAR
+====================== */
 .searchbar {
-  display: inline-block;
+  display: flex;
   align-items: center;
   border: 1px solid #d1d0d0;
   border-radius: 30px;
   padding: 5px 10px;
   background-color: #fff;
 }
-.searchbar form{
+
+.searchbar form {
   display: flex;
   align-items: center;
 }
+
 .searchbar input {
   border: none;
   outline: none;
@@ -88,18 +103,55 @@ nav ul li a:hover{
   align-items: center;
 }
 
-.icon-btn {
-  font-size: 18px;
-  color: #333;
-  cursor: pointer;
+/* ======================
+        ACCOUNT AREA
+====================== */
+.account {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-/* FOOTER */
+.account-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header-right a.text-link {
+    color: white !important;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.header-right a.text-link:hover {
+    color: #f5f5f5 !important; 
+    text-decoration: underline;
+}
+
+.account-icon,
+.cart {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+
+
+.user-name {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+
+/* ======================
+        FOOTER
+====================== */
 footer {
-  background-color: #f8f8f8; /*to define*/
+  background-color: #f8f8f8;
   padding: 20px 30px;
   margin-top: 20px;
-  border-top: 1px solid #ddd; /*to define*/
+  border-top: 1px solid #ddd;
 }
 
 .footer-top {
@@ -138,7 +190,7 @@ footer {
   margin-top: 10px;
 }
 
-.social-icons a img{
+.social-icons a img {
   width: 30px;
   height: 30px;
 }
@@ -150,7 +202,9 @@ footer {
   margin-top: 20px;
 }
 
-/* BREADCRUMB */
+/* ======================
+      BREADCRUMB
+====================== */
 ul.breadcrumb {
   padding: 10px 16px;
   list-style: none;
@@ -160,7 +214,7 @@ ul.breadcrumb li {
   display: inline;
 }
 
-ul.breadcrumb li+li:before {
+ul.breadcrumb li + li:before {
   padding: 8px;
   content: ">";
 }
@@ -175,7 +229,9 @@ ul.breadcrumb li a:hover {
   font-weight: bold;
 }
 
-/*MAIN*/
+/* ======================
+      CONTENT AREA
+====================== */
 .content {
   flex: 1;
   padding: 2rem;
@@ -185,47 +241,8 @@ ul.breadcrumb li a:hover {
 
 .page-title {
   font-size: 40px;
-  font-weight: bold;/*to define */
+  font-weight: bold;
   margin: 1rem 0 2rem;
-  color: #555; /*to define */
-  text-shadow: 2px 2px #ccc;/*to define */
-}
-/* ACCOUNT DROPDOWN */
-.account-dropdown-container {
-  position: relative;
-  display: inline-block;
-}
-
-.account-btn {
-  width: 32px;
-  cursor: pointer;
-}
-
-.account-dropdown {
-  display: none;
-  position: absolute;
-  top: 40px;
-  right: 0;
-  background: white;
-  width: 150px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  border-radius: 8px;
-  overflow: hidden;
-  z-index: 1000;
-}
-
-.account-dropdown a {
-  display: block;
-  padding: 12px 15px;
-  text-decoration: none;
-  color: black;
-}
-
-.account-dropdown a:hover {
-  background: #f2f2f2;
-}
-
-/* SHOW DROPDOWN ON HOVER */
-.account-dropdown-container:hover .account-dropdown {
-  display: block;
+  color: #555;
+  text-shadow: 2px 2px #ccc;
 }
