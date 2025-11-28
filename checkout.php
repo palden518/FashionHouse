@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <meta charset="UTF-8">
 <title>Checkout - Fashion House</title>
 <link rel="stylesheet" href="styles/header-footer.css">
-<link rel="stylesheet" href="checkout.css">
+<link rel="stylesheet" href="styles/checkout.css">
 </head>
 <body>
 

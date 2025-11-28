@@ -21,8 +21,6 @@ if (file_exists($env_file)) {
     echo "<!-- DEBUG: .env file NOT found at $env_file -->";
 }
 
-
-
 // Database configuration from .env
 $servername = getenv('DB_HOST');
 $username = getenv('DB_USER');
@@ -39,8 +37,5 @@ if ($conn->connect_error) {
 
 if ($conn) {
     $conn->set_charset("utf8mb4");
-
 }
-
-
 ?>

@@ -16,7 +16,6 @@
   <main>
 
     <div class="content">
-    <?php include 'breadcrumb.inc'?>
       <h1 class="page-title">HELP</h1>
 
       <section class="return">

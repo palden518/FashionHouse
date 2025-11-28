@@ -1,0 +1,130 @@
+// category_modal_quantites.js
+
+// 1. Modal and quantity control
+// Wrap in DOMContentLoaded to ensure HTML exists before JS runs
+document.addEventListener('DOMContentLoaded', function() {
+    
+  // Check if elements exist to prevent errors on pages without the modal
+  const modalEl = document.getElementById('addToCartModal');
+  if (!modalEl) return; // Stop if modal doesn't exist
+
+  const modal = new bootstrap.Modal(modalEl);
+  const quantityInput = document.getElementById('quantityInput');
+  const decreaseBtn = document.getElementById('decreaseBtn');
+  const increaseBtn = document.getElementById('increaseBtn');
+  const quantityFormInput = document.getElementById('quantityFormInput');
+
+  decreaseBtn.addEventListener('click', function() {
+    let value = parseInt(quantityInput.value);
+    if (value > 1) {
+      quantityInput.value = value - 1;
+      quantityFormInput.value = value - 1;
+    }
+  });
+
+  increaseBtn.addEventListener('click', function() {
+    let value = parseInt(quantityInput.value);
+    quantityInput.value = value + 1;
+    quantityFormInput.value = value + 1;
+  });
+
+  quantityInput.addEventListener('change', function() {
+    if (this.value < 1) this.value = 1;
+    quantityFormInput.value = this.value;
+  });
+
+  // 2. Handle favorite button click
+  document.querySelectorAll('.favorite-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const productId = this.dataset.productId;
+      
+      // UPDATED CHECK HERE
+      if (!isUserLoggedIn()) {
+        window.location.href = 'login.php';
+      } else {
+        console.log('Added product ' + productId + ' to favorites');
+        showNotification('Added to favorites!', 'success');
+      }
+    });
+  });
+
+  // 3. Handle add to cart button click
+  document.querySelectorAll('.cart-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // UPDATED CHECK HERE
+      if (!isUserLoggedIn()) {
+        window.location.href = 'login.php';
+        return;
+      }
+
+      const productId = this.dataset.productId;
+      const productName = this.dataset.productName; // Note: Ensure you added data-product-name in HTML
+      const productPrice = this.dataset.productPrice; // Note: Ensure you added data-product-price in HTML
+
+      // Set modal values
+      document.getElementById('productIdInput').value = productId;
+      document.getElementById('productName').textContent = productName;
+      document.getElementById('productPrice').textContent = '$' + parseFloat(productPrice).toFixed(2);
+      document.getElementById('quantityInput').value = 1;
+      document.getElementById('quantityFormInput').value = 1;
+
+      // Show modal
+      modal.show();
+    });
+  });
+
+  // 4. Handle form submission
+  const addToCartForm = document.getElementById('addToCartForm');
+  if(addToCartForm) {
+      addToCartForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        
+        fetch('add-to-cart.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            showNotification(data.message, 'success');
+            modal.hide();
+          } else {
+            showNotification(data.message, 'error');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          showNotification('Error adding to cart', 'error');
+        });
+      });
+  }
+});
+
+// 5. Show notification
+function showNotification(message, type = 'success') {
+const notification = document.createElement('div');
+notification.className = `toast-notification ${type === 'error' ? 'error' : ''}`;
+notification.innerHTML = `
+  <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+  ${message}
+`;
+document.body.appendChild(notification);
+
+setTimeout(() => {
+  notification.remove();
+}, 3000);
+}
+
+// 6. Check if user is logged in
+// This function now reads the global variable we will set in PHP
+function isUserLoggedIn() {
+  // We check if the global variable is defined and true
+  if (typeof window.isUserLoggedIn !== 'undefined') {
+      return window.isUserLoggedIn;
+  }
+  return false;
+}

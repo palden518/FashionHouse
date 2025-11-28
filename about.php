@@ -17,7 +17,7 @@
   <main>
 
     <div class="content">
-    <?php include 'breadcrumb.inc'?>
+
       <h1 class="page-title">ABOUT US</h1>
 
       <section class="about">

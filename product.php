@@ -112,7 +112,7 @@ if ($product) {
 <!-- Breadcrumb -->
 <nav class="mb-3 small">
 <a href="home.php" class="text-decoration-none">Home</a> ›
-<a href="category.php" class="text-decoration-none">Categories</a> ›
+<a href="product-category.php" class="text-decoration-none">Categories</a> ›
 <a href="category.php?gender=<?php echo strtolower($genderName); ?>" class="text-decoration-none"><?php echo $genderName; ?></a> ›
 <span><?php echo htmlspecialchars($product['product_name']); ?></span>
 </nav>
@@ -226,30 +226,11 @@ if ($product) {
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-document.querySelectorAll('label .pill-btn').forEach(btn => {
-    btn.addEventListener('click', e => {
-        const label = e.target.closest('label');
-        const input = label.querySelector('input');
-
-        document.querySelectorAll(`input[name="${input.name}"]`).forEach(r => {
-            r.parentElement.querySelector('.pill-btn').classList.remove('selected');
-        });
-
-        input.checked = true;
-        btn.classList.add('selected');
-    });
-});
-
-const quantityInput = document.getElementById('quantity-input');
-const totalPriceSpan = document.getElementById('total-price');
-const unitPrice = <?php echo $product['price']; ?>;
-
-quantityInput.addEventListener('input', () => {
-    let qty = parseInt(quantityInput.value);
-    if(isNaN(qty) || qty < 1) qty = 1;
-    totalPriceSpan.textContent = (unitPrice * qty).toFixed(2);
-});
+<script type="text/javascript">
+    // Check if $product exists to avoid errors if the product ID is invalid
+    window.productPrice = <?php echo ($product) ? $product['price'] : 0; ?>;
 </script>
+
+<script src="scripts/product.js"></script>
 </body>
 </html>
